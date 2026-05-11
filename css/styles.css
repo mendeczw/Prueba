@@ -3,6 +3,18 @@
   padding: 0;
   box-sizing: border-box;
 }
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  text-decoration: none;
+}
+
+.logo-brand {
+  width: 45px;
+  height: auto;
+  display: block;
+}
 
 html {
   scroll-behavior: smooth;
@@ -421,8 +433,12 @@ textarea {
 }
 
 .footer-logo {
-  width: 170px;
+  width: 110px;
+  height: 110px;
+  border-radius: 50%;
   object-fit: contain;
+  background: white;
+  padding: 10px;
 }
 
 .footer-social {
