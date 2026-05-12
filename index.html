@@ -362,7 +362,7 @@
           <h2>Conversemos y creemos algo increíble.</h2>
         </div>
 
-        <form class="contact-form">
+        <form class="contact-form" id="whatsapp-form">
           <label
             >Nombre:
             <input type="text" name="nombre" required />
@@ -429,15 +429,15 @@
       <div class="footer-content">
         <div>
           <img
-            src="img/logo_3.png"
+            src="img/logo-blissful.png"
             alt="Logo Blissful Events"
             class="footer-logo"
           />
         </div>
 
         <div class="footer-info">
-          <p>Dirección: Costa Rica</p>
-          <p>Teléfono: +506 0000-0000</p>
+          <p>Dirección: San José, Costa Rica</p>
+          <p>Teléfono: +506 72043963</p>
           <p>Email: info@blissfulevents.com</p>
         </div>
 
@@ -496,6 +496,52 @@
           menuToggle.checked = false;
         });
       });
+    </script>
+    <!--script para enviar mensaje de WhatsApp-->
+    <script>
+      document
+        .getElementById("whatsapp-form")
+        .addEventListener("submit", function (e) {
+          e.preventDefault();
+
+          const nombre = document.querySelector('input[name="nombre"]').value;
+
+          const telefono = document.querySelector(
+            'input[name="telefono"]',
+          ).value;
+
+          const origen = document.querySelector('select[name="origen"]').value;
+
+          const invitados = document.querySelector(
+            'input[name="invitados"]',
+          ).value;
+
+          const presupuesto = document.querySelector(
+            'input[name="presupuesto"]',
+          ).value;
+
+          const evento = document.querySelector('select[name="evento"]').value;
+
+          const detalles = document.querySelector(
+            'textarea[name="detalles"]',
+          ).value;
+
+          const mensaje = `Hola Blissful Events ✨
+
+Nombre: ${nombre}
+Teléfono: ${telefono}
+Cómo escuchó de nosotras: ${origen}
+Cantidad de invitados: ${invitados}
+Presupuesto: ${presupuesto}
+Tipo de evento: ${evento}
+
+Detalles:
+${detalles}`;
+
+          const url = `https://wa.me/50672043963?text=${encodeURIComponent(mensaje)}`;
+
+          window.location.href = url;
+        });
     </script>
   </body>
 </html>
