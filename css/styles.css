@@ -452,113 +452,6 @@ textarea {
   opacity: 0.7;
 }
 
-@media (max-width: 850px) {
-
-  .navbar {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    position: relative;
-    text-align: left;
-  }
-
-  .about,
-  .detail-section,
-  .packages,
-  .testimonial-grid,
-  .footer-content {
-    grid-template-columns: 1fr;
-  }
-
-  /* SECCIÓN FUNDADORAS */
-  .about-images {
-    position: relative;
-    min-height: 620px;
-  }
-
-  .photo-large {
-    width: 100%;
-    height: 560px;
-    object-fit: cover;
-    object-position: center top;
-    border-radius: 260px 260px 0 0;
-    filter: grayscale(100%);
-  }
-
-  .photo-small {
-    position: absolute;
-    right: 10px;
-    bottom: 0;
-    width: 45%;
-    height: 220px;
-    object-fit: cover;
-    object-position: center;
-    border: 10px solid #f7f1e8;
-    border-radius: 140px 140px 0 0;
-    margin: 0;
-  }
-
-  .detail-photo,
-  .gallery-grid img,
-  .testimonial-card img,
-  .service-card img {
-    object-fit: cover;
-    object-position: center;
-  }
-
-  .service-card {
-    grid-template-columns: 1fr;
-  }
-
-  .gallery-grid {
-    grid-template-columns: 1fr 1fr;
-  }
-
-  .footer-social {
-    justify-content: start;
-  }
-
-  .reverse .detail-content {
-    order: 0;
-  }
-}
-
-@media (max-width: 560px) {
-  section {
-    padding: 75px 18px;
-  }
-
-  .gallery-grid,
-  .footer-gallery {
-    grid-template-columns: 1fr;
-  }
-
-  .gallery-grid img,
-  .footer-gallery img,
-  .detail-photo {
-    height: 320px;
-  }
-
-  .about-images {
-    min-height: 520px;
-  }
-
-  .photo-large {
-    height: 470px;
-  }
-
-  .photo-small {
-    width: 55%;
-    height: 180px;
-    right: 0;
-    bottom: 0;
-  }
-
-  .hero-slide h1 {
-    font-size: 3rem;
-  }
-}
-
 /* MENU HAMBURGUESA */
 .menu-toggle {
   display: none;
@@ -579,17 +472,135 @@ textarea {
   transition: 0.3s;
 }
 
-/* MOBILE */
-@media (max-width: 850px) {
+html {
+  scroll-padding-top: 95px;
+}
 
+/* ==========================================
+   RESPONSIVE GENERAL
+   Celular, tablet vertical y tablet horizontal
+   ========================================== */
+
+/* TABLET HORIZONTAL Y LAPTOP PEQUEÑA */
+@media (max-width: 1200px) {
   .navbar {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    position: relative;
-    text-align: left;
+    padding: 18px 22px;
   }
 
+  .brand {
+    font-size: 1rem;
+    letter-spacing: 1.5px;
+  }
+
+  .menu {
+    gap: 18px;
+    font-size: 0.82rem;
+  }
+
+  .about,
+  .detail-section {
+    gap: 40px;
+  }
+
+  h2,
+  .about-text h2 {
+    font-size: clamp(2.3rem, 4vw, 3.6rem);
+  }
+
+  .about-images {
+    min-height: 560px;
+  }
+
+  .photo-large {
+    height: 540px;
+  }
+
+  .photo-small {
+    width: 43%;
+    height: 220px;
+    right: -5px;
+    bottom: 20px;
+  }
+
+  .service-card {
+    grid-template-columns: 230px 1fr;
+  }
+
+  .gallery-grid,
+  .testimonial-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .footer-content {
+    grid-template-columns: 1fr 1.2fr 1fr;
+  }
+}
+
+/* TABLET VERTICAL */
+@media (max-width: 1024px) {
+  section {
+    padding: 90px 24px;
+  }
+
+  .about,
+  .detail-section {
+    grid-template-columns: 1fr;
+    max-width: 760px;
+    gap: 38px;
+  }
+
+  .about-images {
+    position: relative;
+    min-height: 650px;
+    max-width: 620px;
+    width: 100%;
+    margin: auto;
+  }
+
+  .photo-large {
+    width: 100%;
+    height: 610px;
+    object-fit: cover;
+    object-position: center top;
+    border-radius: 300px 300px 0 0;
+  }
+
+  .photo-small {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    width: 44%;
+    height: 230px;
+    object-fit: cover;
+    object-position: center;
+    border: 10px solid #f7f1e8;
+    border-radius: 150px 150px 0 0;
+    margin: 0;
+  }
+
+  .packages,
+  .footer-content {
+    grid-template-columns: 1fr;
+  }
+
+  .detail-photo {
+    width: 100%;
+    max-height: 560px;
+    object-fit: cover;
+    object-position: center;
+  }
+
+  .reverse .detail-content {
+    order: 0;
+  }
+
+  .footer-social {
+    justify-content: start;
+  }
+}
+
+/* MENU HAMBURGUESA PARA TABLET Y CELULAR */
+@media (max-width: 900px) {
   .hamburger {
     display: flex;
     z-index: 100;
@@ -599,7 +610,7 @@ textarea {
     position: absolute;
     top: 100%;
     right: 20px;
-    width: 260px;
+    width: min(280px, calc(100vw - 40px));
     background: rgba(247, 241, 232, 0.97);
     backdrop-filter: blur(12px);
     border-radius: 24px;
@@ -607,12 +618,10 @@ textarea {
     flex-direction: column;
     gap: 18px;
     align-items: flex-start;
-
     opacity: 0;
     visibility: hidden;
     transform: translateY(-15px);
     transition: all 0.35s ease;
-
     box-shadow: 0 15px 40px rgba(0, 0, 0, 0.12);
     border: 1px solid rgba(80, 70, 55, 0.1);
   }
@@ -634,7 +643,6 @@ textarea {
     transform: translateY(0);
   }
 
-  /* ANIMACION X */
   .menu-toggle:checked+.hamburger span:nth-child(1) {
     transform: rotate(45deg) translate(6px, 6px);
   }
@@ -648,29 +656,220 @@ textarea {
   }
 }
 
-html {
-  scroll-padding-top: 95px;
-}
-
-@media (max-width: 850px) {
+/* CELULAR Y TABLET PEQUEÑA */
+@media (max-width: 768px) {
   section {
+    padding: 80px 20px;
     scroll-margin-top: 95px;
   }
 
-  .detail-section {
-    gap: 30px;
-    padding-top: 90px;
-    padding-bottom: 70px;
+  .navbar {
+    padding: 14px 18px;
+    position: relative;
   }
 
+  .brand {
+    font-size: 0.92rem;
+    letter-spacing: 1px;
+  }
+
+  .logo-brand {
+    width: 38px;
+  }
+
+  .hero {
+    height: 92vh;
+  }
+
+  .hero-slide h1 {
+    font-size: clamp(2.4rem, 12vw, 4rem);
+    padding: 0 18px;
+  }
+
+  .about,
+  .detail-section,
+  .packages,
+  .testimonial-grid,
+  .footer-content {
+    grid-template-columns: 1fr;
+  }
+
+  .about-images {
+    position: relative;
+    min-height: 560px;
+    width: 100%;
+    max-width: 440px;
+    margin: auto;
+  }
+
+  .photo-large {
+    width: 100%;
+    height: 520px;
+    object-fit: cover;
+    object-position: center top;
+    border-radius: 260px 260px 0 0;
+  }
+
+  .photo-small {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    width: 52%;
+    height: 190px;
+    object-fit: cover;
+    object-position: center;
+    border: 9px solid #f7f1e8;
+    border-radius: 140px 140px 0 0;
+    margin: 0;
+  }
+
+  h2 {
+    font-size: clamp(2rem, 8vw, 3rem);
+  }
+
+  h3 {
+    font-size: 1.5rem;
+  }
+
+  .about-text p,
   .detail-content p {
     font-size: 1rem;
     line-height: 1.6;
   }
 
+  .service-card {
+    grid-template-columns: 1fr;
+    padding: 20px;
+    gap: 20px;
+  }
+
+  .service-card img {
+    height: 260px;
+    object-fit: cover;
+    object-position: center;
+  }
+
+  .gallery-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .gallery-grid img {
+    height: 330px;
+    object-fit: cover;
+    object-position: center;
+  }
+
+  .testimonial-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .testimonial-card img {
+    height: 330px;
+    object-fit: cover;
+    object-position: center;
+  }
+
+  .detail-section {
+    gap: 30px;
+    padding-top: 85px;
+    padding-bottom: 70px;
+  }
+
   .detail-photo {
     width: 100%;
-    height: auto;
-    border-radius: 90px 90px 0 0;
+    height: 360px;
+    object-fit: cover;
+    object-position: center;
+    border-radius: 120px 120px 0 0;
+  }
+
+  .footer-gallery {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .footer-gallery img {
+    height: 170px;
+    object-fit: cover;
+  }
+
+  .footer-social {
+    justify-content: start;
+  }
+
+  .reverse .detail-content {
+    order: 0;
+  }
+}
+
+/* CELULAR PEQUEÑO */
+@media (max-width: 480px) {
+  section {
+    padding: 70px 18px;
+  }
+
+  .brand {
+    font-size: 0.78rem;
+    letter-spacing: 0.8px;
+  }
+
+  .logo-brand {
+    width: 34px;
+  }
+
+  .about-images {
+    min-height: 500px;
+    max-width: 360px;
+  }
+
+  .photo-large {
+    height: 460px;
+  }
+
+  .photo-small {
+    width: 56%;
+    height: 165px;
+    border-width: 8px;
+  }
+
+  .service-card img,
+  .gallery-grid img,
+  .testimonial-card img {
+    height: 300px;
+  }
+
+  .detail-photo {
+    height: 320px;
+    border-radius: 95px 95px 0 0;
+  }
+
+  .package-card {
+    padding: 28px;
+  }
+
+  .footer-gallery {
+    grid-template-columns: 1fr;
+  }
+
+  .footer-gallery img {
+    height: 220px;
+  }
+}
+
+/* CELULAR MUY ANGOSTO */
+@media (max-width: 360px) {
+  .brand span {
+    display: none;
+  }
+
+  .about-images {
+    min-height: 460px;
+  }
+
+  .photo-large {
+    height: 420px;
+  }
+
+  .photo-small {
+    height: 150px;
   }
 }
