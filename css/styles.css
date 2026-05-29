@@ -470,29 +470,40 @@ textarea {
     grid-template-columns: 1fr;
   }
 
+  /* SECCIÓN FUNDADORAS */
   .about-images {
-    min-height: auto;
+    position: relative;
+    min-height: 620px;
   }
 
-  .photo-large,
-  .photo-small,
+  .photo-large {
+    width: 100%;
+    height: 560px;
+    object-fit: cover;
+    object-position: center top;
+    border-radius: 260px 260px 0 0;
+    filter: grayscale(100%);
+  }
+
+  .photo-small {
+    position: absolute;
+    right: 10px;
+    bottom: 0;
+    width: 45%;
+    height: 220px;
+    object-fit: cover;
+    object-position: center;
+    border: 10px solid #f7f1e8;
+    border-radius: 140px 140px 0 0;
+    margin: 0;
+  }
+
   .detail-photo,
   .gallery-grid img,
   .testimonial-card img,
   .service-card img {
-    object-fit: contain;
+    object-fit: cover;
     object-position: center;
-    height: auto;
-  }
-
-  .photo-large {
-    height: auto;
-  }
-
-  .photo-small {
-    position: static;
-    width: 70%;
-    margin: -80px auto 0;
   }
 
   .service-card {
@@ -526,6 +537,21 @@ textarea {
   .footer-gallery img,
   .detail-photo {
     height: 320px;
+  }
+
+  .about-images {
+    min-height: 520px;
+  }
+
+  .photo-large {
+    height: 470px;
+  }
+
+  .photo-small {
+    width: 55%;
+    height: 180px;
+    right: 0;
+    bottom: 0;
   }
 
   .hero-slide h1 {
