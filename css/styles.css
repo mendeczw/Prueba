@@ -452,7 +452,9 @@ textarea {
   opacity: 0.7;
 }
 
-/* MENU HAMBURGUESA */
+/* ==========================================
+   MENU HAMBURGUESA BASE
+   ========================================== */
 .menu-toggle {
   display: none;
 }
@@ -477,53 +479,55 @@ html {
 }
 
 /* ==========================================
-   RESPONSIVE GENERAL
-   Celular, tablet vertical y tablet horizontal
+   TABLET HORIZONTAL Y LAPTOP PEQUEÑA
+   901px a 1200px
    ========================================== */
-
-/* TABLET HORIZONTAL Y LAPTOP PEQUEÑA */
-@media (max-width: 1200px) {
+@media (min-width: 901px) and (max-width: 1200px) {
   .navbar {
-    padding: 18px 22px;
-  }
-
-  .brand {
-    font-size: 1rem;
-    letter-spacing: 1.5px;
+    padding: 18px 24px;
   }
 
   .menu {
-    gap: 18px;
+    gap: 20px;
     font-size: 0.82rem;
+  }
+
+  section {
+    padding: 85px 24px;
   }
 
   .about,
   .detail-section {
+    grid-template-columns: 1fr 1fr;
     gap: 40px;
   }
 
-  h2,
-  .about-text h2 {
-    font-size: clamp(2.3rem, 4vw, 3.6rem);
+  .about-text h2,
+  .detail-content h2 {
+    font-size: clamp(2.4rem, 4vw, 3.4rem);
   }
 
   .about-images {
-    min-height: 560px;
+    min-height: auto;
   }
 
   .photo-large {
-    height: 540px;
-  }
-
+    width: 100%;
+    max-width: 650px;
+    margin: 0 auto;
+    height: auto;
+    aspect-ratio: 4/5;
+    object-fit: cover;
+    border-radius: 280px 280px 0 0;
+    filter: grayscale(100%);
+}
   .photo-small {
     width: 43%;
-    height: 220px;
-    right: -5px;
+    height: 215px;
+    right: -8px;
     bottom: 20px;
-  }
-
-  .service-card {
-    grid-template-columns: 230px 1fr;
+    object-fit: cover;
+    object-position: center;
   }
 
   .gallery-grid,
@@ -531,76 +535,33 @@ html {
     grid-template-columns: repeat(2, 1fr);
   }
 
+  .service-card {
+    grid-template-columns: 230px 1fr;
+  }
+
   .footer-content {
     grid-template-columns: 1fr 1.2fr 1fr;
   }
 }
 
-/* TABLET VERTICAL */
-@media (max-width: 1024px) {
+/* ==========================================
+   TABLET VERTICAL
+   769px a 900px
+   ========================================== */
+@media (min-width: 769px) and (max-width: 900px) {
   section {
-    padding: 90px 24px;
+    padding: 80px 28px;
+    scroll-margin-top: 95px;
   }
 
-  .about,
-  .detail-section {
-    grid-template-columns: 1fr;
-    max-width: 760px;
-    gap: 38px;
+  .navbar {
+    padding: 18px 28px;
   }
 
-  .about-images {
-    position: relative;
-    min-height: 650px;
-    max-width: 620px;
-    width: 100%;
-    margin: auto;
+  .brand {
+    font-size: 1rem;
   }
 
-  .photo-large {
-    width: 100%;
-    height: 610px;
-    object-fit: cover;
-    object-position: center top;
-    border-radius: 300px 300px 0 0;
-  }
-
-  .photo-small {
-    position: absolute;
-    right: 0;
-    bottom: 0;
-    width: 44%;
-    height: 230px;
-    object-fit: cover;
-    object-position: center;
-    border: 10px solid #f7f1e8;
-    border-radius: 150px 150px 0 0;
-    margin: 0;
-  }
-
-  .packages,
-  .footer-content {
-    grid-template-columns: 1fr;
-  }
-
-  .detail-photo {
-    width: 100%;
-    max-height: 560px;
-    object-fit: cover;
-    object-position: center;
-  }
-
-  .reverse .detail-content {
-    order: 0;
-  }
-
-  .footer-social {
-    justify-content: start;
-  }
-}
-
-/* MENU HAMBURGUESA PARA TABLET Y CELULAR */
-@media (max-width: 900px) {
   .hamburger {
     display: flex;
     z-index: 100;
@@ -609,8 +570,8 @@ html {
   .menu {
     position: absolute;
     top: 100%;
-    right: 20px;
-    width: min(280px, calc(100vw - 40px));
+    right: 24px;
+    width: 280px;
     background: rgba(247, 241, 232, 0.97);
     backdrop-filter: blur(12px);
     border-radius: 24px;
@@ -626,64 +587,187 @@ html {
     border: 1px solid rgba(80, 70, 55, 0.1);
   }
 
-  .menu li {
+  .menu li,
+  .menu a {
     width: 100%;
+    display: block;
   }
 
   .menu a {
-    display: block;
-    width: 100%;
     font-size: 0.95rem;
     padding: 10px 0;
   }
 
-  .menu-toggle:checked+.hamburger+.menu {
+  .menu-toggle:checked + .hamburger + .menu {
     opacity: 1;
     visibility: visible;
     transform: translateY(0);
   }
 
-  .menu-toggle:checked+.hamburger span:nth-child(1) {
+  .menu-toggle:checked + .hamburger span:nth-child(1) {
     transform: rotate(45deg) translate(6px, 6px);
   }
 
-  .menu-toggle:checked+.hamburger span:nth-child(2) {
+  .menu-toggle:checked + .hamburger span:nth-child(2) {
     opacity: 0;
   }
 
-  .menu-toggle:checked+.hamburger span:nth-child(3) {
+  .menu-toggle:checked + .hamburger span:nth-child(3) {
     transform: rotate(-45deg) translate(5px, -5px);
+  }
+
+  .about,
+  .detail-section,
+  .packages,
+  .footer-content {
+    grid-template-columns: 1fr;
+  }
+
+  .about {
+    gap: 35px;
+  }
+
+  .about-images {
+    width: min(100%, 620px);
+    margin: 0 auto;
+    min-height: auto;
+    position: relative;
+  }
+
+  .photo-large {
+    width: 100%;
+    height: auto;
+    aspect-ratio: 4 / 5;
+    object-fit: cover;
+    object-position: center top;
+    border-radius: 240px 240px 0 0;
+  }
+
+  .photo-small {
+    position: absolute;
+    width: 38%;
+    height: auto;
+    aspect-ratio: 1 / 1;
+    right: 5%;
+    bottom: -4%;
+    object-fit: cover;
+    object-position: center;
+    border: 10px solid #f7f1e8;
+    border-radius: 50%;
+    margin: 0;
+  }
+
+  .about-text {
+    max-width: 680px;
+    margin: 35px auto 0;
+  }
+
+  .about-text h2,
+  .detail-content h2 {
+    font-size: clamp(2.4rem, 6vw, 3.6rem);
+  }
+
+  .service-card {
+    grid-template-columns: 1fr;
+  }
+
+  .gallery-grid,
+  .testimonial-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .detail-photo {
+    width: 100%;
+    height: auto;
+    aspect-ratio: 4 / 5;
+    object-fit: cover;
+    border-radius: 180px 180px 0 0;
+  }
+
+  .reverse .detail-content {
+    order: 0;
+  }
+
+  .footer-social {
+    justify-content: start;
   }
 }
 
-/* CELULAR Y TABLET PEQUEÑA */
+/* ==========================================
+   CELULAR Y TABLET PEQUEÑA
+   hasta 768px
+   ========================================== */
 @media (max-width: 768px) {
   section {
-    padding: 80px 20px;
+    padding: 75px 18px;
     scroll-margin-top: 95px;
   }
 
   .navbar {
-    padding: 14px 18px;
-    position: relative;
+    padding: 16px 18px;
   }
 
   .brand {
-    font-size: 0.92rem;
-    letter-spacing: 1px;
+    font-size: 0.95rem;
+    letter-spacing: 1.4px;
   }
 
   .logo-brand {
-    width: 38px;
+    width: 40px;
   }
 
-  .hero {
-    height: 92vh;
+  .hamburger {
+    display: flex;
+    z-index: 100;
   }
 
-  .hero-slide h1 {
-    font-size: clamp(2.4rem, 12vw, 4rem);
-    padding: 0 18px;
+  .menu {
+    position: absolute;
+    top: 100%;
+    right: 18px;
+    width: min(280px, calc(100vw - 36px));
+    background: rgba(247, 241, 232, 0.97);
+    backdrop-filter: blur(12px);
+    border-radius: 24px;
+    padding: 25px;
+    flex-direction: column;
+    gap: 18px;
+    align-items: flex-start;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-15px);
+    transition: all 0.35s ease;
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.12);
+    border: 1px solid rgba(80, 70, 55, 0.1);
+  }
+
+  .menu li,
+  .menu a {
+    width: 100%;
+    display: block;
+  }
+
+  .menu a {
+    font-size: 0.95rem;
+    padding: 10px 0;
+  }
+
+  .menu-toggle:checked + .hamburger + .menu {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+  }
+
+  .menu-toggle:checked + .hamburger span:nth-child(1) {
+    transform: rotate(45deg) translate(6px, 6px);
+  }
+
+  .menu-toggle:checked + .hamburger span:nth-child(2) {
+    opacity: 0;
+  }
+
+  .menu-toggle:checked + .hamburger span:nth-child(3) {
+    transform: rotate(-45deg) translate(5px, -5px);
   }
 
   .about,
@@ -694,41 +778,46 @@ html {
     grid-template-columns: 1fr;
   }
 
+  .about {
+    gap: 28px;
+  }
+
   .about-images {
-    position: relative;
-    min-height: 560px;
     width: 100%;
-    max-width: 440px;
-    margin: auto;
+    min-height: auto;
+    position: relative;
+    margin: 0 auto 35px;
   }
 
   .photo-large {
     width: 100%;
-    height: 520px;
+    height: auto;
+    aspect-ratio: 4 / 5;
     object-fit: cover;
     object-position: center top;
-    border-radius: 260px 260px 0 0;
+    border-radius: 180px 180px 0 0;
+    filter: grayscale(100%);
   }
 
   .photo-small {
     position: absolute;
-    right: 0;
-    bottom: 0;
-    width: 52%;
-    height: 190px;
+    width: 40%;
+    height: auto;
+    aspect-ratio: 1 / 1;
+    right: 4%;
+    bottom: -7%;
     object-fit: cover;
     object-position: center;
-    border: 9px solid #f7f1e8;
-    border-radius: 140px 140px 0 0;
+    border: 8px solid #f7f1e8;
+    border-radius: 50%;
     margin: 0;
   }
 
+  .about-text h2,
+  .detail-content h2,
   h2 {
-    font-size: clamp(2rem, 8vw, 3rem);
-  }
-
-  h3 {
-    font-size: 1.5rem;
+    font-size: clamp(2.1rem, 8vw, 3rem);
+    line-height: 1.12;
   }
 
   .about-text p,
@@ -739,34 +828,20 @@ html {
 
   .service-card {
     grid-template-columns: 1fr;
-    padding: 20px;
-    gap: 20px;
+    gap: 22px;
   }
 
-  .service-card img {
-    height: 260px;
-    object-fit: cover;
-    object-position: center;
-  }
-
-  .gallery-grid {
-    grid-template-columns: 1fr;
-  }
-
-  .gallery-grid img {
-    height: 330px;
-    object-fit: cover;
-    object-position: center;
-  }
-
-  .testimonial-grid {
-    grid-template-columns: 1fr;
-  }
-
+  .service-card img,
+  .gallery-grid img,
   .testimonial-card img {
-    height: 330px;
+    height: auto;
+    aspect-ratio: 4 / 3;
     object-fit: cover;
-    object-position: center;
+  }
+
+  .gallery-grid,
+  .footer-gallery {
+    grid-template-columns: 1fr;
   }
 
   .detail-section {
@@ -777,77 +852,71 @@ html {
 
   .detail-photo {
     width: 100%;
-    height: 360px;
+    height: auto;
+    aspect-ratio: 4 / 5;
     object-fit: cover;
-    object-position: center;
-    border-radius: 120px 120px 0 0;
-  }
-
-  .footer-gallery {
-    grid-template-columns: repeat(2, 1fr);
-  }
-
-  .footer-gallery img {
-    height: 170px;
-    object-fit: cover;
-  }
-
-  .footer-social {
-    justify-content: start;
+    border-radius: 90px 90px 0 0;
   }
 
   .reverse .detail-content {
     order: 0;
   }
+
+  .footer-content {
+    gap: 25px;
+  }
+
+  .footer-social {
+    justify-content: start;
+  }
 }
 
-/* CELULAR PEQUEÑO */
+/* ==========================================
+   CELULARES MUY ANGOSTOS
+   hasta 480px
+   ========================================== */
 @media (max-width: 480px) {
   section {
-    padding: 70px 18px;
+    padding: 65px 16px;
   }
 
   .brand {
-    font-size: 0.78rem;
-    letter-spacing: 0.8px;
+    font-size: 0.82rem;
+    letter-spacing: 1px;
   }
 
   .logo-brand {
-    width: 34px;
+    width: 36px;
+  }
+
+  .hero-slide h1 {
+    font-size: 2.5rem;
   }
 
   .about-images {
-    min-height: 500px;
-    max-width: 360px;
+    margin-bottom: 30px;
   }
 
   .photo-large {
-    height: 460px;
+    border-radius: 150px 150px 0 0;
   }
 
   .photo-small {
-    width: 56%;
-    height: 165px;
-    border-width: 8px;
+    width: 42%;
+    right: 3%;
+    bottom: -6%;
+    border-width: 7px;
   }
 
-  .service-card img,
-  .gallery-grid img,
-  .testimonial-card img {
-    height: 300px;
+  .about-text h2,
+  .detail-content h2,
+  h2 {
+    font-size: clamp(2rem, 9vw, 2.65rem);
   }
 
-  .detail-photo {
-    height: 320px;
-    border-radius: 95px 95px 0 0;
-  }
-
-  .package-card {
-    padding: 28px;
-  }
-
-  .footer-gallery {
-    grid-template-columns: 1fr;
+  .bubble-btn {
+    width: 100%;
+    text-align: center;
   }
 
   .footer-gallery img {
@@ -855,21 +924,24 @@ html {
   }
 }
 
-/* CELULAR MUY ANGOSTO */
-@media (max-width: 360px) {
-  .brand span {
-    display: none;
+/* ==========================================
+   CELULAR HORIZONTAL
+   ========================================== */
+@media (max-height: 500px) and (orientation: landscape) {
+  .hero {
+    height: 120vh;
+  }
+
+  section {
+    padding: 55px 24px;
   }
 
   .about-images {
-    min-height: 460px;
-  }
-
-  .photo-large {
-    height: 420px;
+    width: min(100%, 520px);
   }
 
   .photo-small {
-    height: 150px;
+    width: 34%;
   }
 }
+
